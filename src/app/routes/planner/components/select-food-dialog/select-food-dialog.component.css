@@ -1,0 +1,7 @@
+.dialog-overview-table tr td:first-child {
+    width: 100px;
+}
+
+.button-finish {
+    margin-top: 40px;
+}

@@ -1,0 +1,26 @@
+<h1 class="center">{{ food.name }}</h1>
+
+<mat-form-field class="full-width">
+    <input matInput #amountInput type="number" class="full-width" placeholder="Amount in g" [(ngModel)]="amount" (keyup)="onAmountChange(amountInput.value)">
+</mat-form-field>
+
+<table class="dialog-overview-table">
+        <tr>
+            <td>Calories:</td>
+            <td>{{ (food.calories / 100) * amount }}</td>
+        </tr> 
+        <tr>
+            <td>Carbs:</td>
+            <td>{{ (food.carbs / 100) * amount }}g</td>
+        </tr> 
+        <tr>
+            <td>Protein:</td>
+            <td>{{ (food.protein / 100) * amount }}g</td>
+        </tr> 
+        <tr>
+            <td>Fat:</td>
+            <td>{{ (food.fat / 100) * amount }}g</td>
+        </tr> 
+</table>
+
+<button mat-stroked-button color="primary" class="full-width button-finish" (click)="finishDialog()">Ok</button>

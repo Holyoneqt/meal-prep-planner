@@ -18,3 +18,15 @@
     top: 15%;
     width: 100%;
 }
+
+.food-selection {
+    width: 100%;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+}
+
+.food-selection mat-list-item:hover {
+    background-color: #D3D3D3;
+    cursor: pointer;
+}

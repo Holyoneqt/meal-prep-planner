@@ -10,6 +10,7 @@ import { AppRoutingModule } from './modules/app-routing.module';
 import { AppStoreModule } from './modules/app-store.module';
 import { FoodsComponent } from './routes/foods/foods.component';
 import { HomeComponent } from './routes/home/home.component';
+import { SelectFoodDialogComponent } from './routes/planner/components/select-food-dialog/select-food-dialog.component';
 import { PlannerComponent } from './routes/planner/planner.component';
 import { SettingsComponent } from './routes/settings/settings.component';
 import { AppLoadService } from './services/app-load.service';
@@ -23,6 +24,7 @@ import { StorageService } from './services/storage.service';
         SettingsComponent,
         FoodsComponent,
         PlannerComponent,
+        SelectFoodDialogComponent,
     ],
     imports: [
         BrowserModule,
@@ -39,6 +41,9 @@ import { StorageService } from './services/storage.service';
         StorageService,
         FoodsService,
     ],
-    bootstrap: [AppComponent]
+    entryComponents: [
+        SelectFoodDialogComponent,
+    ],
+    bootstrap: [ AppComponent ]
 })
 export class AppModule { }

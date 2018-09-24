@@ -13,8 +13,8 @@
 <h6 *ngIf="isCurrentWeek()" class="center" style="margin-top: 0; font-style: italic;">current Week</h6>
 
 <div class="week-overview">
-    <mat-grid-list cols="2" rowHeight="4:1">
-        <mat-grid-tile colspan="2">
+    <mat-grid-list cols="4" rowHeight="2:1">
+        <mat-grid-tile colspan="4">
             <table class="table-overview">
                 <tr style="height: 25px;">
                     <th></th>
@@ -24,34 +24,40 @@
                 <tr>
                     <td>Calories</td>
                     <td>{{ weekGoals.totalCalories }}</td>
-                    <td>fjdsoi</td>
+                    <td>{{ weekRemaining.calories }}</td>
                 </tr>
                 <tr>
                     <td>Carbohydrates</td>
                     <td>{{ weekGoals.totalCarbs }}g</td>
-                    <td></td>
+                    <td>{{ weekRemaining.carbs }}g</td>
                 </tr>
                 <tr>
                     <td>Protein</td>
                     <td>{{ weekGoals.totalProtein }}g</td>
-                    <td>fjdsoi</td>
+                    <td>{{ weekRemaining.protein }}g</td>
                 </tr>
                 <tr>
                     <td>Fat</td>
                     <td>{{ weekGoals.totalFat }}g</td>
-                    <td>fjdsoi</td>
+                    <td>{{ weekRemaining.fat }}g</td>
                 </tr>
             </table>
         </mat-grid-tile>
-        <mat-grid-tile style="height: 100%">
-            <mat-list>
-                <mat-list-item *ngFor="let food of foodList" style="height: 36px;">
+        <mat-grid-tile style="height: 55%;">
+            <mat-list class="food-selection">
+                <mat-list-item *ngFor="let food of foodList" style="height: 36px;" (click)="selectFood(food)">
                     {{ food.name }}
+                    <mat-divider></mat-divider>
                 </mat-list-item>
             </mat-list>
         </mat-grid-tile>
-        <mat-grid-tile style="height: 100%">
-
+        <mat-grid-tile colspan="3" style="height: 55%;">
+            <mat-list class="food-selection">
+                <mat-list-item *ngFor="let food of selectedFoods" style="height: 36px;">
+                    {{ food.amount }}g {{ food.baseFood.name }}
+                    <mat-divider></mat-divider>
+                </mat-list-item>
+            </mat-list>
         </mat-grid-tile>
     </mat-grid-list>
 </div>
