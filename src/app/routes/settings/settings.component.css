@@ -1,0 +1,11 @@
+.half-width {
+    margin-left: 2px;
+    margin-right: 2px;
+    width: calc(50% - 4px);
+}
+
+.third-width {
+    margin-left: 2px;
+    margin-right: 2px;
+    width: calc(33.3% - 4px);
+}

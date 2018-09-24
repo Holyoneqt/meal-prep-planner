@@ -1,0 +1,35 @@
+<h1 class="center">Settings</h1>
+
+<mat-grid-list cols="2" rowHeight="1:1">
+    <mat-grid-tile>
+        <form class="full-width" #settingForm="ngForm" (ngSubmit)="submitForm(settingForm.value)">
+            <mat-form-field class="third-width">
+                <input matInput type="number" placeholder="Calories per Meal" [(ngModel)]="settings.caloriesPerMeal" name="caloriesPerMeal">
+            </mat-form-field>
+            <mat-form-field class="third-width">
+                <input matInput type="number" placeholder="Meals per Day" [(ngModel)]="settings.mealsPerDay" name="mealsPerDay">
+            </mat-form-field>
+            <mat-form-field class="third-width">
+                <input matInput type="number" placeholder="Days per Week" [(ngModel)]="settings.daysPerWeek" name="daysPerWeek">
+            </mat-form-field>
+            <mat-form-field class="third-width">
+                <input matInput type="number" placeholder="Percent Carbohydrates" [(ngModel)]="settings.carbsPercent" name="carbsPercent">
+            </mat-form-field>
+            <mat-form-field class="third-width">
+                <input matInput type="number" placeholder="Percent Protein" [(ngModel)]="settings.proteinPercent" name="proteinPercent">
+            </mat-form-field>
+            <mat-form-field class="third-width">
+                <input matInput type="number" placeholder="Percent Fat" [(ngModel)]="settings.fatPercent" name="fatPercent">
+            </mat-form-field>
+            <button mat-stroked-button style="color: green;" type="submit" class="full-width">Save</button>
+        </form>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-list>
+            <mat-list-item> {{ getSettingsSummary().mealsPerWeek }} Meals per Week </mat-list-item>
+            <mat-list-item> {{ getSettingsSummary().carbsPerMeal }}g Carbohydrates per Meal </mat-list-item>
+            <mat-list-item> {{ getSettingsSummary().proteinPerMeal }}g Protein per Meal </mat-list-item>
+            <mat-list-item> {{ getSettingsSummary().fatPerMeal }}g Fat per Meal </mat-list-item>
+        </mat-list>
+    </mat-grid-tile>
+</mat-grid-list>

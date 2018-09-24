@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+
+* {
+    font-family: 'Comfortaa', cursive;
+}
+
+.full-width {
+    width: calc(100% - 8px);
+    padding: 0 4px;
+}
+
+.center {
+    text-align: center;
+    margin: 8px auto;
+}

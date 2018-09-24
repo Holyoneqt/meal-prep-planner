@@ -1,0 +1,42 @@
+#app-toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100% !important;
+    height: 64px;
+}
+
+#app-main-container {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    width: calc(100%);
+    height: calc(100% - 64px);
+}
+
+.app-toolbar__title {
+    font-family: 'Comfortaa', cursive;
+    font-size: 32px;
+    margin: 16px auto;
+}
+
+.app-sidenav {
+    height: 100%;
+}
+
+.app-sidenav__nav {
+    width: 200px;
+    border-right: 1px solid #e5e5e5;
+}
+
+.app-sidenav__content {
+    padding: 4px;
+}
+
+.app-sidenav__bottom {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}

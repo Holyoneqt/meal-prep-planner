@@ -1,0 +1,57 @@
+<h1 class="center">Week Planner</h1>
+
+<div class="center" style="margin-bottom: 0">
+    <button mat-icon-button class="change-week-button" style="margin-right: 8px;" (click)="changeWeekIndex(-1)">
+        <mat-icon>chevron_left</mat-icon>
+    </button>
+    <h3 class="center" style="display: inline-block; width: 40%">{{ weekStart }} - {{ weekEnd }}
+    </h3>
+    <button mat-icon-button class="change-week-button" style="margin-left: 8px;" (click)="changeWeekIndex(1)">
+        <mat-icon>chevron_right</mat-icon>
+    </button>
+</div>
+<h6 *ngIf="isCurrentWeek()" class="center" style="margin-top: 0; font-style: italic;">current Week</h6>
+
+<div class="week-overview">
+    <mat-grid-list cols="2" rowHeight="4:1">
+        <mat-grid-tile colspan="2">
+            <table class="table-overview">
+                <tr style="height: 25px;">
+                    <th></th>
+                    <th>Goal</th>
+                    <th>Remaining</th>
+                </tr>
+                <tr>
+                    <td>Calories</td>
+                    <td>{{ weekGoals.totalCalories }}</td>
+                    <td>fjdsoi</td>
+                </tr>
+                <tr>
+                    <td>Carbohydrates</td>
+                    <td>{{ weekGoals.totalCarbs }}g</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Protein</td>
+                    <td>{{ weekGoals.totalProtein }}g</td>
+                    <td>fjdsoi</td>
+                </tr>
+                <tr>
+                    <td>Fat</td>
+                    <td>{{ weekGoals.totalFat }}g</td>
+                    <td>fjdsoi</td>
+                </tr>
+            </table>
+        </mat-grid-tile>
+        <mat-grid-tile style="height: 100%">
+            <mat-list>
+                <mat-list-item *ngFor="let food of foodList" style="height: 36px;">
+                    {{ food.name }}
+                </mat-list-item>
+            </mat-list>
+        </mat-grid-tile>
+        <mat-grid-tile style="height: 100%">
+
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

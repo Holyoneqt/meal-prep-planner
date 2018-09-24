@@ -1,0 +1,20 @@
+.change-week-button {
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+}
+
+.table-overview td {
+    width: 125px;
+    text-align: center;
+}
+
+.table-overview tr td:first-child {
+    text-align: right;
+}
+
+.week-overview {
+    position: absolute;
+    top: 15%;
+    width: 100%;
+}
