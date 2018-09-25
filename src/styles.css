@@ -11,6 +11,11 @@
     padding: 0 4px;
 }
 
+.half-width {
+    width: calc(50% - 8px);
+    padding: 0 4px;
+}
+
 .center {
     text-align: center;
     margin: 8px auto;

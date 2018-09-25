@@ -1,3 +1,4 @@
+import { WeekState } from './objects/weeks/week.state';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { FoodsState } from './objects/foods/foods.state';
@@ -9,3 +10,6 @@ export const getSettings = createSelector(getSettingsState, (state: SettingsStat
 
 export const getFoodsState = createFeatureSelector<CoreState, FoodsState>('foods');
 export const getFoodList = createSelector(getFoodsState, (state: FoodsState) => state.foodList);
+
+export const getWeekState = createFeatureSelector<CoreState, WeekState>('weeks');
+export const getWeeks = createSelector(getWeekState, (state: WeekState) => state.weeks);

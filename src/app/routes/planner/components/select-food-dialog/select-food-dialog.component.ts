@@ -37,4 +37,8 @@ export class SelectFoodDialogComponent {
         this.dialogRef.close(returnVal);
     }
 
+    public cancelDialog(): void {
+        this.dialogRef.close(undefined);
+    }
+
 }
