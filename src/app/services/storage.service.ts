@@ -1,17 +1,19 @@
-import { Week } from './../models/week.model';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 
+import { SetWeeks } from '../store/entities/weeks/week.actions';
 import { Food } from './../models/food.model';
 import { initialSettings, Settings } from './../models/settings.model';
-import { SetFoodList } from './../store/objects/foods/foods.actions';
-import { SetSettings } from './../store/objects/settings/settings.actions';
+import { Week } from './../models/week.model';
+import { SetFoodList } from './../store/entities/foods/foods.actions';
+import { SetSettings } from './../store/entities/settings/settings.actions';
 import { getFoodList, getSettings, getWeeks } from './../store/selectors';
 import { CoreState } from './../store/store-index';
-import { SetWeeks } from '../store/objects/weeks/week.actions';
 
 @Injectable()
 export class StorageService {
+
+    private readonly userTokenKey = 'mpp-user-token';
 
     private readonly settingsKey = 'mpp-settings';
     private readonly foodsKey = 'mpp-foods';
@@ -31,6 +33,18 @@ export class StorageService {
         this.store.select(getSettings).subscribe(newVal => this.saveSettings(newVal));
         this.store.select(getFoodList).subscribe(newVal => this.saveFoodList(newVal));
         this.store.select(getWeeks).subscribe(newVal => this.saveWeeks(newVal));
+    }
+
+    public getUserToken(): string {
+        return localStorage.getItem(this.userTokenKey);
+    }
+
+    public setUserToken(token: string): void {
+        localStorage.setItem(this.userTokenKey, token);
+    }
+
+    public removeUserToken(): void {
+        localStorage.removeItem(this.userTokenKey);
     }
 
     public getSettings(): Settings {

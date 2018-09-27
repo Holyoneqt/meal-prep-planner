@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
 import { Food } from './../models/food.model';
-import { AddFood, DeleteFood } from './../store/objects/foods/foods.actions';
+import { AddFood, DeleteFood } from './../store/entities/foods/foods.actions';
 import { CoreState } from './../store/store-index';
 import { StorageService } from './storage.service';
 

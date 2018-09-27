@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { convertFormFood, FormFood, initialFormFood } from './../../models/food.model';
-import { AddFood } from './../../store/objects/foods/foods.actions';
+import { AddFood } from './../../store/entities/foods/foods.actions';
 import { CoreState } from './../../store/store-index';
 
 @Component({

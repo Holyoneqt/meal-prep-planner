@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 
 import { CoreState } from '../../store/store-index';
 import { Settings } from './../../models/settings.model';
-import { SetSettings } from './../../store/objects/settings/settings.actions';
+import { SetSettings } from './../../store/entities/settings/settings.actions';
 import { getSettings } from './../../store/selectors';
 
 @Component({

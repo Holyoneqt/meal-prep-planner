@@ -3,6 +3,14 @@
         <mat-icon>{{ sidenavToggleIcon }}</mat-icon>
     </button>
     <p class="app-toolbar__title">Meal Prep Planner</p>
+    <button *ngIf="!user" mat-button (click)="loginWithGoogle()">
+        <mat-icon>account_box</mat-icon>
+        Login with Google
+    </button>
+    <button *ngIf="user" mat-button (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        Logout, {{ user.displayName }}
+    </button>
 </mat-toolbar>
 
 
@@ -11,11 +19,12 @@
         <mat-sidenav #appSidenav class="app-sidenav__nav" mode="side" [(opened)]="sidenavOpen" (opened)="sidenavToggleIcon = 'arrow_back_rounded'"
             (closed)="sidenavToggleIcon = 'reorder_rounded'">
             <mat-nav-list>
-                <a mat-list-item *ngFor="let link of sidenavLinks" [routerLink]="[ link.route ]"> {{ link.display }} </a>
+                <a mat-list-item *ngFor="let link of sidenavLinks" [routerLink]="[ link.route ]"> {{ link.display }}
+                </a>
             </mat-nav-list>
 
             <mat-nav-list class="app-sidenav__bottom">
-                <a mat-list-item [routerLink]="[ 'settings' ]"> 
+                <a mat-list-item [routerLink]="[ 'settings' ]">
                     <mat-icon style="margin-right: 5px">settings</mat-icon>
                     Settings
                 </a>

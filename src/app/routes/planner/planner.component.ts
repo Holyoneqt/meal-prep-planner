@@ -1,14 +1,14 @@
-import { AddWeek } from './../../store/objects/weeks/week.actions';
-import { Week } from './../../models/week.model';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Store } from '@ngrx/store';
 import * as moment from 'moment';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 import { CoreState } from '../../store/store-index';
 import { Food } from './../../models/food.model';
 import { WeekPlannerFood } from './../../models/week-planner-food.model';
+import { Week } from './../../models/week.model';
+import { AddWeek } from './../../store/entities/weeks/week.actions';
 import { getFoodList, getSettings, getWeeks } from './../../store/selectors';
 import { SelectFoodDialogComponent } from './components/select-food-dialog/select-food-dialog.component';
 

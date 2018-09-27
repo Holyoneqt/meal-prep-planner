@@ -1,12 +1,12 @@
-import { WeekState } from './objects/weeks/week.state';
 import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
 
 import { environment } from './../../environments/environment';
-import * as foodsReducer from './objects/foods/foods.reducer';
-import { FoodsState } from './objects/foods/foods.state';
-import * as settingsReducer from './objects/settings/settings.reducer';
-import { SettingsState } from './objects/settings/settings.state';
-import * as weekReducer from './objects/weeks/week.reducer';
+import * as foodsReducer from './entities/foods/foods.reducer';
+import { FoodsState } from './entities/foods/foods.state';
+import * as settingsReducer from './entities/settings/settings.reducer';
+import { SettingsState } from './entities/settings/settings.state';
+import * as weekReducer from './entities/weeks/week.reducer';
+import { WeekState } from './entities/weeks/week.state';
 
 export interface CoreState {
     settings: SettingsState;

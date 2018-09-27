@@ -14,7 +14,7 @@ export class FoodsComponent implements OnInit {
 
     public displayedColumns: string[] = [ 'name', 'calories', 'carbs', 'protein', 'fat', 'actions' ];
 
-    constructor(private foodsService: FoodsService, private dataSource: FoodsDataSource) { }
+    constructor(public foodsService: FoodsService, public dataSource: FoodsDataSource) { }
 
     public ngOnInit(): void { }
 
