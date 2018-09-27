@@ -21,7 +21,7 @@ export class AddWeek implements Action {
 
 export class UpdateWeek implements Action {
     readonly type = WeekActionTypes.UpdateWeek;
-    constructor(public payload: { oldWeek: Week, updatedWeek: Week }) {}
+    constructor(public payload: Week) {}
 }
 
 export class DeleteWeek implements Action {

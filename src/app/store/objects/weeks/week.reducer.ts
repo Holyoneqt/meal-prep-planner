@@ -19,8 +19,8 @@ export function reducer(state: WeekState = initialWeekState, action: WeekActions
             return {
                 ...state,
                 weeks: state.weeks.map(mapVal => {
-                    if (mapVal.beginTime === action.payload.oldWeek.beginTime) {
-                        return action.payload.updatedWeek;
+                    if (mapVal.beginTime === action.payload.beginTime) {
+                        return action.payload;
                     } else {
                         return mapVal;
                     }

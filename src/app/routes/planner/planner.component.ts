@@ -11,6 +11,7 @@ import { Food } from './../../models/food.model';
 import { WeekPlannerFood } from './../../models/week-planner-food.model';
 import { getFoodList, getSettings, getWeeks } from './../../store/selectors';
 import { SelectFoodDialogComponent } from './components/select-food-dialog/select-food-dialog.component';
+import { WeekService } from '../../services/week.service';
 
 
 @Component({
@@ -24,8 +25,6 @@ export class PlannerComponent implements OnInit {
     public weekStart: string;
     public weekEnd: string;
 
-    public weeks: Week[] = [];
-
     public weekGoals: any;
     public weekRemaining: any;
 
@@ -35,7 +34,7 @@ export class PlannerComponent implements OnInit {
 
     public changes: boolean;
 
-    constructor(private store: Store<CoreState>, private dialog: MatDialog) { }
+    constructor(private store: Store<CoreState>, private weekService: WeekService, private dialog: MatDialog) { }
 
     public ngOnInit(): void {
         this.store.select(getSettings).subscribe(settings => {
@@ -55,8 +54,6 @@ export class PlannerComponent implements OnInit {
             this.calculateWeekRemaining();
             this.changes = true;
         });
-
-        this.store.select(getWeeks).subscribe(weeks => this.weeks = weeks);
 
         this.weekIndexSubject = new BehaviorSubject(0);
         this.weekIndexSubject.subscribe(newVal => {
@@ -93,27 +90,26 @@ export class PlannerComponent implements OnInit {
     }
 
     public saveWeek(): void {
-        const week: Week = {
+        this.weekService.saveWeek({
             beginTime: moment().add(this.weekIndex, 'week').startOf('isoWeek').valueOf(),
             foods: this.selectedFoods
-        };
-
-        this.store.dispatch(new AddWeek(week));
+        });
         this.changes = false;
     }
 
     private loadWeek(): void {
         this.selectedFoods = [];
 
-        const week = this.weeks.find(weekFind => weekFind.beginTime === moment().add(this.weekIndex, 'week').startOf('isoWeek').valueOf());
+        const week = this.weekService.getWeek(moment().add(this.weekIndex, 'week').startOf('isoWeek').valueOf());
         if (week) {
             this.selectedFoods = week.foods;
         }
     }
 
     private calculateWeek(): void {
-        this.weekStart = moment().add(this.weekIndex, 'week').startOf('isoWeek').format('D. MMMM YYYY');
-        this.weekEnd = moment().add(this.weekIndex, 'week').endOf('isoWeek').format('D. MMMM YYYY');
+        const weekDates = this.weekService.getWeekDates(this.weekIndex);
+        this.weekStart = weekDates.begin;
+        this.weekEnd = weekDates.end;
     }
 
     private calculateWeekRemaining(): void {

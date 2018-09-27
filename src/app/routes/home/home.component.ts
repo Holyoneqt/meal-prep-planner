@@ -11,17 +11,8 @@ import { CoreState } from './../../store/store-index';
 })
 export class HomeComponent implements OnInit {
 
-    public formFood: FormFood;
-
     constructor(private store: Store<CoreState>) { }
 
-    public ngOnInit(): void {
-        this.formFood = initialFormFood;
-    }
-
-    public submitForm(): void {
-        const newFood = convertFormFood(this.formFood);
-        this.store.dispatch(new AddFood(newFood));
-    }
+    public ngOnInit(): void {}
 
 }
