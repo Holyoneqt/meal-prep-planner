@@ -30,7 +30,7 @@
 
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>
-            <button mat-stroked-button color="primary" >
+            <button mat-stroked-button color="primary" (click)="createNewFood()">
                 <mat-icon>add_rounded</mat-icon>
                 Add
             </button>

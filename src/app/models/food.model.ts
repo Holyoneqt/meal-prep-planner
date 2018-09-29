@@ -42,12 +42,12 @@ export function convertFormFood(formFood: FormFood): Food {
     try {
         return {
             name: formFood.name,
-            calories: parseInt(formFood.calories, 10),
-            carbs: parseInt(formFood.carbs, 10),
-            sugar: parseInt(formFood.sugar, 10),
-            fiber: parseInt(formFood.fiber, 10),
-            protein: parseInt(formFood.protein, 10),
-            fat: parseInt(formFood.fat, 10)
+            calories: parseFloat(formFood.calories),
+            carbs: parseFloat(formFood.carbs),
+            sugar: parseFloat(formFood.sugar),
+            fiber: parseFloat(formFood.fiber),
+            protein: parseFloat(formFood.protein),
+            fat: parseFloat(formFood.fat)
         };
     } catch (e) {
         console.error(e);

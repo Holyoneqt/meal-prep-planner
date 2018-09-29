@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { CoreState } from '../../store/store-index';
-import { Settings } from './../../models/settings.model';
+import { initialSettings, Settings } from './../../models/settings.model';
+import { StorageService } from './../../services/storage.service';
 import { SetSettings } from './../../store/entities/settings/settings.actions';
-import { getSettings } from './../../store/selectors';
 
 @Component({
   templateUrl: './settings.component.html',
@@ -12,12 +12,12 @@ import { getSettings } from './../../store/selectors';
 })
 export class SettingsComponent implements OnInit {
 
-    public settings: Settings;
+    public settings: Settings = initialSettings;
 
-    constructor(private store: Store<CoreState>) { }
+    constructor(private store: Store<CoreState>, private storage: StorageService) { }
 
     public ngOnInit(): void {
-        this.store.select(getSettings).subscribe(settingsVal => this.settings = settingsVal);
+        this.storage.getSettings().subscribe(s => this.settings = s);
     }
 
     public submitForm(fromForm: Settings): void {

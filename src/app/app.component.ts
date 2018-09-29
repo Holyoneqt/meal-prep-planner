@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { Store } from '@ngrx/store';
 import { auth } from 'firebase/app';
 
-import { StorageService } from './services/storage.service';
 import { CoreState } from './store/store-index';
 
 @Component({
@@ -19,9 +18,8 @@ export class AppComponent implements OnInit {
     public sidenavLinks: { display: string, route: string }[];
     
     public user: firebase.User;
-    private test: AngularFireList<any>;
 
-    constructor(private store: Store<CoreState>, public storageService: StorageService, private afAuth: AngularFireAuth, private afDatabse: AngularFireDatabase) { }
+    constructor(private store: Store<CoreState>, private afAuth: AngularFireAuth, private afDatabse: AngularFireDatabase) { }
 
     public ngOnInit(): void {
         this.afAuth.authState.subscribe(user => this.user = user);
