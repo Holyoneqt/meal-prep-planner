@@ -8,6 +8,7 @@ import {
     MatIconModule,
     MatInputModule,
     MatListModule,
+    MatSelectModule,
     MatSidenavModule,
     MatTableModule,
     MatToolbarModule,
@@ -26,6 +27,7 @@ import {
         MatGridListModule,
         MatDividerModule,
         MatDialogModule,
+        MatSelectModule,
     ],
 })
 export class AppMaterialModule { }

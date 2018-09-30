@@ -1,5 +1,6 @@
 export interface Food {
     name: string;
+    type: string;
     calories: number;
     carbs: number;
     sugar: number;
@@ -10,6 +11,7 @@ export interface Food {
 
 export const initialFood: Food = {
     name: '',
+    type: '-',
     calories: 0,
     carbs: 0,
     sugar: 0,
@@ -20,6 +22,7 @@ export const initialFood: Food = {
 
 export interface FormFood {
     name: string;
+    type: string;
     calories: string;
     carbs: string;
     sugar: string;
@@ -30,6 +33,7 @@ export interface FormFood {
 
 export const initialFormFood: FormFood = {
     name: '',
+    type: '-',
     calories: '',
     carbs: '',
     sugar: '',
@@ -42,6 +46,7 @@ export function convertFormFood(formFood: FormFood): Food {
     try {
         return {
             name: formFood.name,
+            type: formFood.type,
             calories: parseFloat(formFood.calories),
             carbs: parseFloat(formFood.carbs),
             sugar: parseFloat(formFood.sugar),

@@ -3,3 +3,14 @@
     margin-right: 0;
     margin-left: auto;
 }
+
+.foods-table td {
+    width: 20%;
+}
+
+.filter-select {
+    position: absolute;
+    width: 10%;
+    right: 20%;
+    top: 4%;
+}

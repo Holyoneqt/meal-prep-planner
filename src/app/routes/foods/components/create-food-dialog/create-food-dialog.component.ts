@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
-import { convertFormFood, FormFood, initialFormFood } from './../../../../models/food.model';
+import { FoodType } from './../../../../models/enums/food-type.enum';
+import { Food, initialFood } from './../../../../models/food.model';
 
 @Component({
     selector: 'app-create-food-dialog',
@@ -10,18 +11,21 @@ import { convertFormFood, FormFood, initialFormFood } from './../../../../models
 })
 export class CreateFoodDialogComponent implements OnInit {
 
-    public formFood: FormFood;
+    public food: Food;
+    public types: string[];
 
-    constructor(public dialogRef: MatDialogRef<CreateFoodDialogComponent>) {}
+    constructor(public dialogRef: MatDialogRef<CreateFoodDialogComponent>,
+        @Optional() @Inject(MAT_DIALOG_DATA) public data: Food) {}
 
     public ngOnInit(): void {
-        this.formFood = initialFormFood;
+        this.food = { ...this.data } || initialFood;
+        this.types = Object.keys(FoodType);
     }
     
     public submitForm(form): void {
+        console.log(form.value);
         if (form.valid) {
-            const newFood = convertFormFood(this.formFood);
-            this.dialogRef.close(newFood);
+            this.dialogRef.close(this.food);
         }
     }
 

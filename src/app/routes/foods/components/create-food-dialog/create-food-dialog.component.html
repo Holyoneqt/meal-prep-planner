@@ -1,26 +1,33 @@
 <h1 class="center">Add new Food</h1>
 
 <form #addFoodForm="ngForm" validate (ngSubmit)="submitForm(addFoodForm)">
+    <mat-form-field class="half-width">
+        <input matInput required placeholder="Name" [(ngModel)]="food.name" name="name">
+    </mat-form-field>
+    <mat-form-field class="half-width">
+        <mat-select placeholder="Categorie" [(ngModel)]="food.type" name="type">
+          <mat-option *ngFor="let type of types" value="{{ type }}">
+            {{ type }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     <mat-form-field class="full-width">
-        <input matInput required placeholder="Name" [(ngModel)]="formFood.name" name="name">
+        <input matInput required type="number" placeholder="Calories" [(ngModel)]="food.calories" name="calories">
     </mat-form-field>
     <mat-form-field class="full-width">
-        <input matInput required type="number" placeholder="Calories" [(ngModel)]="formFood.calories" name="calories">
+        <input matInput required type="number" placeholder="Carbs" [(ngModel)]="food.carbs" name="carbs">
     </mat-form-field>
     <mat-form-field class="full-width">
-        <input matInput required type="number" placeholder="Carbs" [(ngModel)]="formFood.carbs" name="carbs">
+        <input matInput required type="number" placeholder="Sugar" [(ngModel)]="food.sugar" name="sugar">
     </mat-form-field>
     <mat-form-field class="full-width">
-        <input matInput required type="number" placeholder="Sugar" [(ngModel)]="formFood.sugar" name="sugar">
+        <input matInput required type="number" placeholder="Fiber" [(ngModel)]="food.fiber" name="fiber">
     </mat-form-field>
     <mat-form-field class="full-width">
-        <input matInput required type="number" placeholder="Fiber" [(ngModel)]="formFood.fiber" name="fiber">
+        <input matInput required type="number" placeholder="Protein" [(ngModel)]="food.protein" name="protein">
     </mat-form-field>
     <mat-form-field class="full-width">
-        <input matInput required type="number" placeholder="Protein" [(ngModel)]="formFood.protein" name="protein">
-    </mat-form-field>
-    <mat-form-field class="full-width">
-        <input matInput required type="number" placeholder="Fat" [(ngModel)]="formFood.fat" name="fat">
+        <input matInput required type="number" placeholder="Fat" [(ngModel)]="food.fat" name="fat">
     </mat-form-field>
     <button mat-stroked-button color="primary" class="half-width button-finish" type="submit">Add</button>
     <button mat-stroked-button color="warn" class="half-width button-finish" (click)="cancelDialog()">Cancel</button>

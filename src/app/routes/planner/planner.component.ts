@@ -6,9 +6,11 @@ import { BehaviorSubject, Subject } from 'rxjs';
 
 import { WeekService } from '../../services/week.service';
 import { CoreState } from '../../store/store-index';
+import { FoodType } from './../../models/enums/food-type.enum';
 import { Food } from './../../models/food.model';
 import { initialSettings } from './../../models/settings.model';
 import { WeekPlannerFood } from './../../models/week-planner-food.model';
+import { FoodsService } from './../../services/foods.service';
 import { StorageService } from './../../services/storage.service';
 import { getFoodList } from './../../store/selectors';
 import { SelectFoodDialogComponent } from './components/select-food-dialog/select-food-dialog.component';
@@ -28,21 +30,17 @@ export class PlannerComponent implements OnInit {
     public weekGoals: any;
     public weekRemaining: any;
 
+    public foodTypes: string[];
     public foodList: Food[];
     public selectedFoodsSubject: Subject<WeekPlannerFood>;
     public selectedFoods: WeekPlannerFood[] = [];
 
     public changes: boolean;
 
-    constructor(private store: Store<CoreState>, private storage: StorageService, private weekService: WeekService, private dialog: MatDialog) { }
+    constructor(private store: Store<CoreState>, private storage: StorageService, private foodService: FoodsService, private weekService: WeekService, private dialog: MatDialog) { }
 
     public ngOnInit(): void {
-        this.weekGoals = {
-            totalCalories: 0,
-            totalCarbs: 0,
-            totalProtein: 0,
-            totalFat: 0
-        };
+        this.foodTypes = Object.keys(FoodType);
 
         this.storage.getSettings().subscribe(settings => {
             settings = settings || initialSettings;
@@ -72,6 +70,10 @@ export class PlannerComponent implements OnInit {
         });
 
         this.calculateWeekRemaining();
+    }
+
+    public getFoodOfType(type: FoodType): Food[] {
+        return this.foodService.getFoodsOfType(type);
     }
 
     public resetWeekIndex(): void {

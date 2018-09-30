@@ -20,7 +20,7 @@
 }
 
 .food-selection {
-    width: 100%;
+    width: 98%;
     position: absolute;
     top: 2%;
     left: 2%;
@@ -29,4 +29,19 @@
 .food-selection mat-list-item:hover {
     background-color: #D3D3D3;
     cursor: pointer;
+}
+
+/* width */
+mat-grid-tile::-webkit-scrollbar {
+    width: 4px;
+}
+
+/* Handle */
+mat-grid-tile::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+mat-grid-tile::-webkit-scrollbar-thumb:hover {
+    background: #555; 
 }
